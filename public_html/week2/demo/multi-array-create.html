@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        <script type="text/javascript">
+            
+            /* create an array object */
+            var myArray = [];
+            
+            /* create another array object with the values */
+            var items = ['d','t','y',7,8];
+            
+            /* push a copy of those items */
+            myArray.push(items.slice());
+            
+             /* create a reverse copy of those items */
+            var itemsReverse = items.slice().reverse();
+            
+             /* push a copy of those reverse items */
+            myArray.push(itemsReverse.slice());
+            
+            
+            console.log(myArray);
+            console.log(items);
+            
+        </script>
+        
+    </body>
+</html>

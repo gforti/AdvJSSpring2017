@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        <script type="text/javascript">
+            
+            /* Create an array using the bracket([]) notation 
+             * var myvar = []
+             * You can also add values into the array
+             * */
+            
+            var myvar = [1,2,3,4,5];
+            
+            /* Access the value of the index in the array using the brackets
+             * right after the variable. 
+             * myvar[3]
+             */
+            console.log(myvar[3]);
+            
+            /* any object variable type in JavaScript can
+             * add in properties of your own.  Just a good to
+             * know basis.
+             */
+            myvar['hahaha'] = 'hello';
+            myvar['abc'] = 'abc';
+            
+            /*to add an item to the array use the Push Method.
+             * 
+             */
+            myvar.push('testing');
+            
+            /*  to overwrite an index just assign a value to the
+             * desired index
+             * myvar[5] = 'hi';
+             */
+            
+            /*
+             *  Both lines shown are ways you can push a value into an array
+             *  for JavaScript use the Push
+            myvar.push('hi');
+            myvar[myvar.length] = 'hi'; */
+    
+            /* slice is a shortcut to shallow copy the array.  
+             *              * 
+             */
+            var myarray = myvar.slice();
+            
+             /* splice will remove items in the array.  
+             *             
+             */
+            console.log(myarray.splice(2,2));
+            console.log(myarray.splice(1,1));
+            console.log(myvar);
+            
+            /* You can use a for each loop in the format below
+             * best used for JavaScript objects (Just about any type of variable)
+             */
+            for ( var item in myvar) {
+               // console.log('index =', item, 'value = ', myvar[item]);
+            }
+            
+            /* a for loop is better used for array in general */
+            for ( var i = 0; i < myvar.length; i++ ) {
+                console.log(myvar[i]);
+            }
+            
+            /* This is the new standard for using foreach loops
+             
+                myvar.forEach(function (item, index, array) {
+                    console.log(item, index);
+                });
+            */
+            
+            
+            
+        </script>
+    </body>
+</html>

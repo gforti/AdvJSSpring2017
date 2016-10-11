@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        <script type="text/javascript">
+            
+            /* an array with array values
+             * 
+             */
+            var myvar = [   ['d'],
+                            ['4','h'],
+                            ['g','k','l']
+                        ];
+            
+            console.log(myvar);
+            
+            /*
+             * To loop through you need to use two for loops
+             * think of it as a table with rows, then the iems in
+             * the row
+             */
+            var row;
+            for ( var i = 0; i < myvar.length; i ++ ){
+                row = myvar[i];
+                
+                for ( var j = 0; j < row.length; j++ ) {
+                    /*
+                     * inside the inner loop you can add your logic
+                     * here
+                     */
+                    if ( row[j] === 'k' ) {
+                       
+                      console.log('item is equal to k'); 
+                       continue;
+                    } 
+                    console.log(row[j]);
+                    
+                }
+                
+                
+            }
+            
+        </script>
+    </body>
+</html>
