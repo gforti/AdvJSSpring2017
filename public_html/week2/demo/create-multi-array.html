@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div></div>
+        
+        <script type="text/javascript">
+            
+            var items = [];
+            var str = '';
+            /* we can create a matrix by going through the array and 
+             * creating each index as a new array;
+             * within the row we can access the columns.
+             */
+            
+            str += '<table>';
+            for ( var i = 0; i < 10; i++) {
+                items[i] = [];
+                str += '<tr>'
+               for ( var j = 0; j < 10; j++) {                
+                    items[i][j] = i*j;     
+                    str += '<td>' + items[i][j] + '</td>';
+                }    
+                str += '</tr>'
+            }
+            str += '</table>';
+            
+            document.querySelector('div').innerHTML = str;
+            console.log(items);
+        </script>
+    </body>
+</html>
