@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            .error {
+                color: red;
+            } 
+            .hide {
+                display: none;
+            }
+            .show {
+                display: block;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="show">TODO write content</div>
+        
+        <button id="hide">hide</button>
+        <button class="btn-show">show</button>
+        
+        <script type="text/javascript">
+            
+            var div = document.querySelector('div');
+
+            div.classList.add('error');
+
+            div.style.position = 'absolute';
+            div.style.top = '50px';
+            div.style.zIndex = '3';
+            div.style.paddingLeft = '2em';
+
+            
+            // select by ID Attribute
+            var btnHide = document.querySelector('#hide');
+
+            // select by class Attribute
+            var btnShow = document.querySelector('.btn-show');
+
+            btnHide.addEventListener('click', hide);
+            btnShow.addEventListener('click', show);
+
+
+            function hide() {
+              //div.style.display = 'none';
+              div.classList.remove('show');
+              div.classList.add('hide');
+            }
+            
+            function show() {
+                div.classList.remove('hide');
+                div.classList.add('show');
+            }
+            
+            
+        </script>
+    </body>
+</html>

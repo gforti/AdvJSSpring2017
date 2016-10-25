@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            .scrollBox {
+                height: 150px;
+                overflow: auto;
+            }
+            
+            </style>
+    </head>
+    <body>
+        <div class="scrollBox">
+            <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt libero sed mi egestas cursus. Mauris turpis odio, lacinia sed purus a, tincidunt tincidunt tortor. Ut molestie diam non lorem aliquet cursus. Suspendisse potenti. Phasellus in odio enim. Sed volutpat, purus ac laoreet pellentesque, sapien urna varius ipsum, eget volutpat nulla neque at felis. Curabitur blandit vitae nulla vitae consectetur. Pellentesque pellentesque orci leo, a pretium ante cursus vitae. Vestibulum venenatis vehicula aliquet. Pellentesque imperdiet aliquet odio quis viverra. Aliquam tincidunt aliquet euismod. In id ornare nunc, quis sodales nunc. Aliquam venenatis sed lacus eget tristique.
+            </p>
+            <p>
+                    Nullam at odio eu urna dictum consectetur. Proin vitae vulputate odio, viverra imperdiet est. Aenean quam lectus, vehicula vitae euismod nec, luctus eget elit. Quisque consectetur non nisi tempor tempus. Etiam eleifend ipsum neque, sit amet cursus lectus feugiat sit amet. Curabitur laoreet, est suscipit imperdiet consequat, tortor diam venenatis mi, eget convallis est sem quis felis. Sed suscipit lorem scelerisque magna porttitor auctor. Aenean eget dui dignissim, iaculis tortor ut, blandit orci.
+            </p>
+            <p>
+                    Duis iaculis sem neque, vitae imperdiet velit fringilla et. Nullam nunc justo, venenatis sit amet justo vel, convallis scelerisque metus. Quisque nec sodales lectus. Praesent sagittis augue sed dui euismod elementum. Maecenas vel nulla id massa pulvinar facilisis. Quisque aliquam nulla velit. In viverra tempus erat vitae egestas.
+            </p>
+            <p>
+                    Nunc nec dapibus ante. Nullam dictum ut sem mollis pulvinar. Quisque tincidunt non erat vel convallis. Ut metus nibh, euismod in ultricies vel, congue eget metus. Sed laoreet lacinia sollicitudin. Mauris dictum diam et gravida ullamcorper. Fusce libero leo, ultricies pellentesque justo vitae, adipiscing dictum metus. Aenean convallis elit a iaculis imperdiet.
+            </p>
+            <p>
+                    Cras aliquet neque et rhoncus mollis. Ut rhoncus elit neque, sit amet ullamcorper purus venenatis quis. Etiam molestie, libero nec commodo vestibulum, libero erat consequat lorem, eu elementum quam lacus et eros. Cras vitae lacus id felis euismod ullamcorper. Cras et leo quis tortor molestie vehicula. Sed lobortis mauris quis eleifend posuere. Suspendisse iaculis ultrices massa. Vivamus a libero vel mauris feugiat elementum. 
+            </p>
+        </div>
+        
+        <script type="text/javascript">
+            
+            var objDiv = document.querySelector('div.scrollBox');
+            
+            objDiv.addEventListener('scroll', checkPosition);
+            
+            function checkPosition() {
+                console.clear();
+                console.log(objDiv.scrollTop);
+                console.log(objDiv.scrollHeight);
+                console.log(objDiv.offsetHeight);
+                
+                 if ( objDiv.scrollTop == (objDiv.scrollHeight-objDiv.offsetHeight) ) {
+                    console.log('bottom');
+                }
+            }
+            
+            
+            
+        </script>
+    </body>
+</html>
