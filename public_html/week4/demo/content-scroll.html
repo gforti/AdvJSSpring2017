@@ -31,6 +31,7 @@
             </p>
         </div>
         
+        
         <script type="text/javascript">
             
             var objDiv = document.querySelector('div.scrollBox');
@@ -39,16 +40,14 @@
             
             function checkPosition() {
                 console.clear();
-                console.log(objDiv.scrollTop);
-                console.log(objDiv.scrollHeight);
-                console.log(objDiv.offsetHeight);
+                console.log(objDiv.scrollTop); // current position of the scroll bar
+                console.log(objDiv.scrollHeight); // the total hight of the div
+                console.log(objDiv.offsetHeight); // What you can see on the page
                 
-                 if ( objDiv.scrollTop == (objDiv.scrollHeight-objDiv.offsetHeight) ) {
+                 if ( objDiv.scrollTop === (objDiv.scrollHeight-objDiv.offsetHeight) ) {
                     console.log('bottom');
                 }
             }
-            
-            
             
         </script>
     </body>

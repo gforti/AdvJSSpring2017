@@ -15,13 +15,16 @@
                 display: block;
             }
             
+            
+            
         </style>
     </head>
     <body>
-        <div class="show">TODO write content</div>
+        <div>TODO write content</div>
         
         <button id="hide">hide</button>
         <button class="btn-show">show</button>
+        <button class="btn-toggle">toggle</button>
         
         <script type="text/javascript">
             
@@ -40,9 +43,11 @@
 
             // select by class Attribute
             var btnShow = document.querySelector('.btn-show');
+            var btnToggle = document.querySelector('.btn-toggle');
 
             btnHide.addEventListener('click', hide);
             btnShow.addEventListener('click', show);
+            btnToggle.addEventListener('click', toggle);
 
 
             function hide() {
@@ -54,6 +59,14 @@
             function show() {
                 div.classList.remove('hide');
                 div.classList.add('show');
+            }
+            
+            function toggle() {
+                /* remember this will now work if it has the show class */
+               div.classList.toggle('hide'); 
+                
+               console.log( div.classList.contains('hide') );
+                
             }
             
             
