@@ -24,13 +24,13 @@
             <p class="emailError">
                 <label>Email</label>
                 <input name="email" type="text" value="" />
-                <span class="error">*</span>
+                <span class="error hide">*</span>
             </p>
             
             <p class="radioError">
                 <label>Radio Button</label>
-                <input type="radio" name="agreeForm" value="agree" />
-                <span class="error">*</span>
+                <input type="radio" name="agreeForm" value="agree" disabled="disabled" />
+                <span class="error hide">*</span>         
             </p>
             
             <p>
@@ -70,22 +70,49 @@
                 * but this will stop the form from submmiting,
                 * it's default function
                 */ 
+               
                e.preventDefault();
+               
                var email = document.querySelector('input[name="email"]');
-
+               var emailError = document.querySelector('p.emailError > span');
+               
+               var radioBtn = document.querySelector('input[value="agree"]');
+               var radioBtnError = document.querySelector('p.radioError > span');
+               
                console.log('form submited');
                // console.log is great for debuging your code
+               console.log(email);
                console.log(email.value);
+               console.log(email.name);
+               console.log(email.type);
+               
+               
+               console.log(radioBtn);
+               console.log(radioBtn.checked);
+               console.log(radioBtn.value);
+               console.log(radioBtn.disabled);
+               radioBtn.disabled = false;
 
+                
                // email has the attribute value, we use it to see if
                // a user has filled it out.
                if ( email.value === '' ) {
-
+                   emailError.classList.remove('hide');
+               } else {
+                    emailError.classList.add('hide');
                }
-               console.log(email);
+               
+               if ( radioBtn.checked === false ) {
+                   radioBtnError.classList.remove('hide');
+               } else {
+                    radioBtnError.classList.add('hide');
+               }
+                              
 
 
            }
+           
+           
 
             
             
