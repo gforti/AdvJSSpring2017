@@ -30,3 +30,18 @@ describe("getMaxOfArray", function() {
     });
 
 });
+
+/*
+describe("strUpper", function() {
+    
+    it("should take a string and return it in all uppercase", function() {
+        expect( strUpper('hello') ).toEqual('HELLO');        
+    });
+    
+    it("should return the value given if not a typeof Array", function() {
+        expect( strUpper(null) ).toBe(null);
+        expect( strUpper(0) ).toEqual(0);
+    });
+    
+});
+*/

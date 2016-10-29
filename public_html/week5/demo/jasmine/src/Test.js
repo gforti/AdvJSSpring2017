@@ -11,3 +11,7 @@ function getMaxOfArray(numArray) {
     if ( !Array.isArray(numArray) ) return numArray;
     return Math.max.apply(null, numArray);
 }
+
+function strUpper(str) {
+    return str;
+}
