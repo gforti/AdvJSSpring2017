@@ -2,7 +2,8 @@
 describe("reverseString", function() {
     
     it("should take a string and reverse it", function() {
-        expect( reverseString('hello') ).toEqual('olleh');
+        var result = reverseString('hello');
+        expect( result ).toEqual('olleh');
     });
     
     it("should return the value given if not a typeof String", function() {
