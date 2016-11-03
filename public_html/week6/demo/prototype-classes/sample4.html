@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+               
+        <button class="add">Add Car</button>
+        
+         <script type="text/javascript">            
+            'use strict';
+            
+            
+            document.querySelector('button.add').addEventListener('click', function(){
+                new Car();
+            });
+                    
+            /* functions are first class objects in JS */
+            function Car(){
+                this.model = 'Ford';
+                this.color = 'Blue';
+                this.doors = 2;
+                this.driving = false;  
+                this.speed = 0;
+                this.maxSpeed = 100;
+                this.elem;
+                
+                /* this is the constructor, you can also execute functions here too */
+               this.make().drive().go();
+            }
+            
+            Car.prototype.make = function(){
+                                
+                this.elem = document.createElement('h1');
+                this.elem.addEventListener('click', this.crush.bind(this));
+                document.body.appendChild(this.elem);
+                return this;
+            };
+            
+             Car.prototype.crush = function(){                
+                document.body.removeChild(this.elem);
+                return this;
+            };
+                        
+            Car.prototype.info = function(){
+                return 'The car speed is ' + this.speed + ' of ' + this.maxSpeed;
+            };
+            
+            Car.prototype.go = function(){
+                
+                var timer = setInterval(this.run.bind(this), 500);
+                                                                
+                return this;
+            };
+            
+             Car.prototype.run = function(){
+                if ( this.driving ) {
+                    this.speed = Math.ceil(Math.random()*this.maxSpeed) + 1;
+                }
+                var info = this.info();
+                this.elem.innerHTML = info;
+                                                
+                return this;
+            };
+            
+            Car.prototype.drive = function(){
+                this.driving = true;
+                return this;
+            };
+            
+            Car.prototype.stop = function(){
+                this.driving = false;
+                this.speed = 0;
+                return this;
+            };
+                        
+            
+            
+        </script>
+    </body>
+</html>

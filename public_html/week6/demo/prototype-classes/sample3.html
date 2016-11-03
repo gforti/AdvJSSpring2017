@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Open browser console</h1>
+        
+        <button class="drive">Drive</button>
+        <button class="stop">Stop</button>
+        
+         <script type="text/javascript">            
+            'use strict';
+            
+            /* functions are first class objects in JS */
+            function Car(model, color, doors, maxSpeed){
+                this.model = model;
+                this.color = color;
+                this.doors = doors;
+                this.driving = false;  
+                this.speed = 0;
+                this.maxSpeed = maxSpeed;
+                
+                /* this is the constructor, you can also execute functions here too */
+               this.drive().go();
+            }
+                        
+            Car.prototype.info = function(){
+                return 'The car speed is ' + this.speed + ' of ' + this.maxSpeed;
+            };
+            
+            Car.prototype.go = function(){
+                
+                var timer = setInterval(this.run.bind(this), 500);
+                                                                
+                return this;
+            };
+            
+             Car.prototype.run = function(){
+                if ( this.driving ) {
+                    this.speed = Math.ceil(Math.random()*this.maxSpeed) + 1;
+                }
+                var info = this.info();
+                document.querySelector('h1').innerHTML = info;
+                                                
+                return this;
+            };
+            
+            Car.prototype.drive = function(){
+                this.driving = true;
+                return this;
+            };
+            
+            Car.prototype.stop = function(){
+                this.driving = false;
+                this.speed = 0;
+                return this;
+            };
+            
+                                                   
+             
+            /* create a new instane of the object and the prototype functions will be applied */            
+            var car1 = new Car('Ford', 'Blue', 2, 130);
+            
+            
+            document.querySelector('button.drive').addEventListener('click', car1.drive.bind(car1));
+            document.querySelector('button.stop').addEventListener('click', car1.stop.bind(car1));
+            
+            
+        </script>
+    </body>
+</html>

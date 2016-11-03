@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p>Open browser console</p>
+        
+         <script type="text/javascript">            
+            'use strict';
+            
+            /* functions are first class objects in JS */
+            function Car(model, color, doors){
+                 /* this is the constructor */
+                this.model = model;
+                this.color = color;
+                this.doors = doors;
+                this.driving = false;  
+                
+                /* Local Scope variables cannot be accessed */
+                var localScope = 'hello';
+            }
+            
+             Car.prototype.localVar = function(){
+                return 'Local Scope variables cannot be accessed ' + this.localScope;
+            };
+            
+            Car.prototype.info = function(){
+                return 'The car runing is ' + this.model;
+            };
+            
+            Car.prototype.drive = function(){
+                this.driving = true;
+                return this;
+            };
+            
+            Car.prototype.stop = function(){
+                this.driving = false;
+                return this;
+            };
+                                       
+             
+            /* create a new instane of the object and the prototype functions will be applied */            
+            var car1 = new Car('Ford', 'Blue', 2);
+            console.log(car1);
+            console.log('car1.drive().stop().driving', car1.drive().stop().driving);
+            console.log('car1.drive().driving', car1.drive().driving);
+            console.log(car1.model, car1.color, car1.doors);
+            console.log('car1.localVar()', car1.localVar());
+            
+             var car2 = new Car('Audi', 'Black', 4);
+            console.log(car2);
+            console.log('car2.drive().stop().driving', car2.drive().stop().driving);
+            console.log('car2.drive().driving', car2.drive().driving);
+            console.log(car2.model, car2.color, car2.doors);
+           
+           
+            /* you can call the prototype function and use the call method to pass a reference to the object 
+             * it should access
+             */            
+            console.log(Car.prototype.run.call(car1));
+            console.log(Car.prototype.run.call(car2));
+            
+            
+        </script>
+    </body>
+</html>
