@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <button>Add P tag1</button>
+        <button>Add P tag2</button>
+        <div>TODO write content</div>
+        
+        
+        <script type="text/javascript">
+                        
+            document.querySelector('body > button:nth-child(1)').addEventListener('click', addTagP1);
+            document.querySelector('body > button:nth-child(2)').addEventListener('click', addTagP2);
+            
+            function addTagP1(){
+                var p = document.createElement('p');
+                p.setAttribute('id', 'ptag');
+                p.classList.add('content');
+                var textNode = document.createTextNode('This is some text');
+                p.appendChild(textNode);
+                document.body.appendChild(p);
+            }
+            
+            function addTagP2(){
+                var p = document.createElement('p');
+                p.setAttribute('id', 'ptag');
+                p.classList.add('content');
+                p.innerHTML = '<strong> this is some text</strong>';
+                p.addEventListener('mouseover', function(){
+                    this.style.color = 'red';
+                });
+                p.addEventListener('mouseout', function(){
+                    this.style.color = 'black';
+                });
+                document.body.appendChild(p);                                
+            }
+            
+            
+            
+            
+        </script>
+        
+        
+    </body>
+</html>
