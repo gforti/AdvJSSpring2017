@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+         <style type="text/css">
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="tutorial" width="750" height="550"></canvas>
+
+        <script type="text/javascript">
+            
+            
+            var can = document.querySelector('#tutorial');
+            var ctx = can.getContext('2d');
+            
+            function drawClear(){
+                ctx.clearRect(0,0,can.width,can.height);
+            }
+            var width = 100,
+                height = 100,
+                xaxis = 150,
+                yaxis = 0; 
+        
+            var canvasBottom = (can.height - height );
+            var canvasRight = ( can.width - width);
+        
+        
+            function moveRectY(){
+                 
+                if ( yaxis < canvasBottom ) {
+                    drawClear();
+                    yaxis += 20;                    
+                    ctx.fillRect(xaxis, yaxis, width, height); // x y / w h
+                    setTimeout(moveRectY, 100);
+                } else {
+                    moveRectX();
+                }
+            }
+           
+            window.addEventListener('load', moveRectY);
+            
+            function moveRectX(){
+               if ( xaxis < canvasRight ) {
+                    drawClear();
+                    xaxis += 20;                    
+                    ctx.fillRect(xaxis, yaxis, width, height); // x y / w h
+                    setTimeout(moveRectY, 100);
+                } else {
+                    reset();
+                }
+               
+            }
+            
+            function reset() {
+               xaxis = 150;
+               yaxis = 0;  
+               moveRectY();
+            }
+            
+           
+            
+        </script>
+    </body>
+</html>
