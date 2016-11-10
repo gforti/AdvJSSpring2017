@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        Name <input name="fname" type="text" />
+        <br />
+        <button id="save">Save</button>
+        <button id="delete">delete</button>
+        
+        <script type="text/javascript">
+            
+            
+            var input = document.querySelector('input[name="fname"]');
+            
+            // make sure you attach the click events to the buttons
+            document.querySelector('#save').addEventListener('click', saveData); // save will run saveData()
+            document.querySelector('#delete').addEventListener('click', deleteData); // delete will run deleteData()
+            
+            /*
+             * when you save the data refresh the page to see the input value populate.
+             */
+            function saveData() {                
+                localStorage.setItem("fname", input.value);                
+            }
+            
+            function deleteData() {
+                localStorage.removeItem("fname");
+            }
+                       
+            
+            function showData() {
+                var inputValue = localStorage.getItem("fname");
+                if ( inputValue ) {
+                    input.value = inputValue;
+                }
+            }
+            
+            
+            window.addEventListener('load', showData);
+            
+        </script>
+       
+    </body>
+</html>
