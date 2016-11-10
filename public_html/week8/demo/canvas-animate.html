@@ -34,12 +34,12 @@
             function moveRectY(){
                  
                 if ( yaxis < canvasBottom ) {
-                    drawClear();
-                    yaxis += 20;                    
+                    drawClear(); // Always clear the canvas before the next drawing
+                    yaxis += 20;   // change the position before updating the drawing                 
                     ctx.fillRect(xaxis, yaxis, width, height); // x y / w h
-                    setTimeout(moveRectY, 100);
+                    setTimeout(moveRectY, 100); // since we are not done, lets run the function for the next drawing
                 } else {
-                    moveRectX();
+                    moveRectX(); // once we are done, lets start the next function
                 }
             }
            
