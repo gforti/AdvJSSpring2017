@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <button>Call Promise</button>
+        
+        <div class="log"></div>
+        
+         <script type="text/javascript">            
+            'use strict';
+            
+            document.querySelector('button').addEventListener('click', testPromise);
+            
+            var log = document.querySelector('div.log');
+             
+            function testPromise() {
+                var promise = new Promise(function(resolve, reject) {
+                    // do a thing, possibly async, then…
+
+                    var result = Math.round( Math.random() );
+
+                    if ( result ) {
+                      resolve("Stuff worked!");
+                    }
+                    else {
+                      reject(Error("It broke"));
+                    }
+                });
+
+
+                promise.then(function(result) {
+                    log.insertAdjacentHTML('beforeend', result +'<br/>');
+                    console.log(result); // "Stuff worked!"
+                }, function(err) {
+                    log.insertAdjacentHTML('beforeend', err +'<br/>');
+                    console.log(err); // Error: "It broke"
+                });
+            }
+            
+        </script>
+    </body>
+</html>

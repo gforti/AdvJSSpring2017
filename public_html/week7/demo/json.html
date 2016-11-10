@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <p>Open browser console</p>
+        
+         <script type="text/javascript">            
+            'use strict';
+            
+            /* JSON is just a data format, but in JavaScript it can hold any type of object
+             * 
+             * To access the properties use the dot notation or the array notation
+             * basicJSON.userId or basicJSON['userId']
+             * 
+             * array notation has the benefit of passing a variable key
+             */
+            var basicJSON = {
+                'userId': 1,
+                'id': 1,
+                'title': 'quo adipisci enim quam ut ab',
+                'completed': true,
+                'nested' : {
+                    'bookId' : 'dfrg3-43jg9-45',
+                    'bookName' : 'JavaScript Ninja'
+                }
+            };
+            
+           
+             console.log( 'access title property', basicJSON.title );
+             console.log( 'access title property', basicJSON['title'] );
+             
+             console.log( 'access nested.bookName property', basicJSON.nested.bookName );
+             console.log( 'access nested.bookId property', basicJSON['nested'].bookId );
+             console.log( 'access nested.bookName property', basicJSON['nested']['bookName'] );
+             
+             var keyItem = 'id';
+             
+            console.log( 'access ' + keyItem + ' property', basicJSON[keyItem] );
+            
+            console.log( JSON.stringify(basicJSON) );
+            
+            console.log( JSON.parse('{"userId": 1,"id": 1,"title": "quo adipisci enim quam ut ab","completed": true}') );
+            
+            for ( var key in basicJSON ) {
+                console.log(key, basicJSON[key] );
+            }
+            
+            /* Use this to support all browsers */
+            for ( var key in basicJSON ) {
+                if ( basicJSON.hasOwnProperty(key) ) {
+                    console.log(key, basicJSON[key] );
+                }
+            }
+            
+        </script>
+    </body>
+</html>

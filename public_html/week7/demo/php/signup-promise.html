@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+
+        <h2>Sign up</h2>
+        <form action="#" method="post">            
+            <p class="usernameError">
+                <label>User Name</label>
+                <input name="username" type="text" value="" />
+                <span class="hide">*</span>
+            </p>
+            <p class="passwordError">
+                <label>Password</label>
+                <input name="password" type="text" value="" />
+                <span class="hide">*</span>
+            </p>  
+            <p class="confirmPasswordError">
+                <label>Confirm Password</label>
+                <input name="confirmPassword" type="text" value="" />
+                <span class="hide">*</span>
+            </p>
+
+            <input type="submit" value="Submit" />
+
+        </form>
+
+        <div id="confirmation"></div>
+
+
+        <script type="text/javascript" src="js/ajax.js"></script>
+        <script type="text/javascript">
+
+            var form = document.querySelector('form');
+            var confirmation = document.querySelector('#confirmation');
+
+            form.addEventListener('submit', checkForm);
+
+            function checkForm(e) {
+                e.preventDefault();
+
+                var inputs = document.querySelectorAll('input');
+
+                var i = inputs.length;
+
+                var data = '';
+                while (i--) {
+                    if (inputs[i].name && inputs[i].name !== 'confirmPassword') {
+                        data += inputs[i].name + '=' + inputs[i].value + '&';
+                    }
+
+                }
+                data = data.slice(0, -1);
+                console.log(data);
+                var url = 'http://localhost/api/save.php';
+                var verb = 'POST';
+
+                makeRequestPromise(url, verb, data).then(httpResolve);
+            }
+
+            function httpResolve(response) {               
+                console.log(response);
+
+                if (response.data.loginSave) {
+                    displayMessage('Login Saved');
+                } else {
+                    displayMessage('Login could not be Saved');
+                }
+            }
+
+            function displayMessage(msg) {
+                confirmation.innerHTML = msg;
+            }
+
+
+
+            document.querySelector('input[name="username"]').addEventListener('blur', function () {
+                var url = 'http://localhost/api/user-name-taken.php';
+                var verb = 'POST';
+                var data = 'username=' + this.value;
+
+                makeRequestPromise(url, verb, data).then(function(response){
+                     if (response.data.userNameTaken) {
+                        displayMessage('Sorry please use a different user name');
+                    } else {
+                        displayMessage('user name is available');
+                    }
+                });
+            });
+
+        </script>
+    </body>
+</html>

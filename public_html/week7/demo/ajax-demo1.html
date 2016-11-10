@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            button {
+                cursor: pointer; 
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>   
+        
+      <button class="good">Make a request</button>        
+      <button class="bad">Make a bad request</button>
+        
+      <p>Open browser console</p>
+      <div>Ajax Process:</div>
+      <div class="process"></div>
+       
+      <script type="text/javascript">            
+        'use strict';
+          
+        
+        document.querySelector('button.good').addEventListener('click', makeRequest.bind(null, './data/todo.json', alertContents) );
+        document.querySelector('button.bad').addEventListener('click', makeRequest.bind(null, 'todo.json', alertContents) );
+
+        var divProcess = document.querySelector('div.process');
+        
+        var startTime;
+        
+        function makeRequest(url, callback) {
+            
+            var httpRequest = new XMLHttpRequest();
+            divProcess.innerHTML = '';
+          
+            httpRequest.addEventListener('load', reqListener.bind(httpRequest, 'load'));
+            httpRequest.addEventListener('error', reqListener.bind(httpRequest, 'error'));
+            httpRequest.addEventListener('readystatechange', callback);
+            httpRequest.open('GET', url);
+            startTime = performance.now();
+            httpRequest.send();
+            
+        }
+
+        function alertContents() {
+            /* this is refrenced to httpRequest */
+            /*  States (uses State Pattern)
+             *  DONE : 4
+             *  HEADERS_RECEIVED : 2
+             *  LOADING : 3
+             *  OPENED : 1
+              * UNSENT : 0
+             */
+            var state = 'UNSENT OPENED HEADERS_RECEIVED LOADING DONE'.split(' ');
+            divProcess.innerHTML += '<p> Current ready state is: ' + state[this.readyState] + ' = ' + this.readyState + '</p>';
+            
+            if ( this.readyState === XMLHttpRequest.DONE ) {
+                
+                var endTime = ( (performance.now() - startTime) / 1000.0 ).toFixed(2);
+                divProcess.innerHTML += '<p><small>fulfilled on ' + endTime + ' seconds</small></p>';
+                
+                if ( this.status === 200 ) {
+                    // handle this.response
+                    console.log( 'The request is Done.' );
+                } else {
+                    console.log('There was a problem with the request.');
+                }
+            }
+            
+        }
+        
+        
+        
+        function reqListener(type) {
+            console.log(type);
+            console.log(this);
+            console.log(this.response);
+            console.log(this.responseText);
+            console.log(this.status);
+            console.log(this.statusText);
+            console.log(this.readyState);
+            console.log(this.responseURL);
+            console.log(this.DONE);
+        }
+        
+     
+      </script>
+        
+        
+    </body>
+</html>
