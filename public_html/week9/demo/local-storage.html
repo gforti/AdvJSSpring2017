@@ -11,11 +11,20 @@
         <script type="text/javascript">
             
             /*
-            localStorage.clear();
-            localStorage.setItem();
-            localStorage.getItem();
-            localStorage.removeItem();
+            localStorage.clear(); - removes all items saved
+            localStorage.setItem(); - sets an item with a value
+            localStorage.getItem(); - gets a sets item and returns the value
+            localStorage.removeItem(); - remove an item that was set
+    
+            local storage saves the information in a key pair value only on a persons personal machine.
+            the values can only be a string.  So if you want to save JSON you have to
+            stringify the JSON before saving - JSON.stringify()
+    
+            This is very useful to have an application that can save the data offline and allows you
+            to send the data via AJAX once they are back online.
             */
+           
+           
            
            
            localStorage.setItem("test", "hello world");
