@@ -24,6 +24,11 @@ and open the template in the editor.
             var log = document.querySelector('div.log');
              
             function testPromise() {
+                /* the new Promise function takes in a function with a resolve callback and a reject call back 
+                 * from the Promise function.
+                 * 
+                 * So you can determine in your code when to resolve or reject the promise
+                 */
                 var promise = new Promise(function(resolve, reject) {
                     // do a thing, possibly async, then…
 
@@ -38,6 +43,9 @@ and open the template in the editor.
                 });
 
 
+                /* once you have the promise object you can you the then function to handle the resolve or the rejected
+                 * promise
+                 */
                 promise.then(function(result) {
                     log.insertAdjacentHTML('beforeend', result +'<br/>');
                     console.log(result); // "Stuff worked!"

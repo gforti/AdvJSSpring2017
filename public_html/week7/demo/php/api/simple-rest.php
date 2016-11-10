@@ -22,10 +22,16 @@ $response = array(
 
 $response['message'] = 'hello';
 
+/* these headers are important so that outside calls made from the server
+ * can access the page
+ */
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=utf8");
 header("HTTP/1.1 " . $status . " " . $status_codes[$status]);
 
+/* we use the json_encode function to take a PHP array and turn it into 
+ * a JSON string
+ */
 echo json_encode($response, JSON_PRETTY_PRINT);
 
 exit();
