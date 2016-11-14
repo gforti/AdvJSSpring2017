@@ -52,20 +52,21 @@
 
             function hide() {
               //div.style.display = 'none';
-              div.classList.remove('show');
-              div.classList.add('hide');
+              /* we add the window object to the global variable just as a reference for us to know */
+              window.div.classList.remove('show');
+              window.div.classList.add('hide');
             }
             
             function show() {
-                div.classList.remove('hide');
-                div.classList.add('show');
+                window.div.classList.remove('hide');
+                window.div.classList.add('show');
             }
             
             function toggle() {
                 /* remember this will now work if it has the show class */
-               div.classList.toggle('hide'); 
+               window.div.classList.toggle('hide'); 
                 
-               console.log( div.classList.contains('hide') );
+               console.log( window.div.classList.contains('hide') );
                 
             }
             

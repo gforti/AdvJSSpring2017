@@ -28,13 +28,11 @@
                                
                 <div class="other hide"> Other: <input type="text" name="other" /> </div>
             </p>
-            
-                     
+                                 
         </form>
         
         <script type="text/javascript">
-            
-           
+                       
            var radios = document.querySelectorAll('input[name="agreeForm"]');
            
            for (var i = 0; i < radios.length; i++ ) {
@@ -43,24 +41,20 @@
            
            
            function showfield(e) {
-               var divOther = document.querySelector('div.other');
-               var input = document.querySelector('input[name="other"]');
-               var other = document.querySelector('input[value="Other"]');
-           
-           console.log(other);
-              if ( other.checked ) {
-                divOther.classList.remove('hide');
-              } else {
-                  divOther.classList.add('hide');
-                  input.value = '';
-              }
-                    
-                    
-                
-               
-            }
+                var divOther = document.querySelector('div.other');
+                var input = document.querySelector('input[name="other"]');
+                var other = document.querySelector('input[value="Other"]');
 
-            
+                console.log(other);
+                
+                if ( other.checked ) {
+                    divOther.classList.remove('hide');
+                } else {
+                    divOther.classList.add('hide');
+                    input.value = '';
+                }
+                    
+            }            
             
         </script>
     </body>
