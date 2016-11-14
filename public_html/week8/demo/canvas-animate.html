@@ -20,7 +20,7 @@
             var ctx = can.getContext('2d');
             
             function drawClear(){
-                ctx.clearRect(0,0,can.width,can.height);
+                window.ctx.clearRect(0, 0, window.can.width, window.can.height); // x y / w h
             }
             var width = 100,
                 height = 100,
@@ -33,34 +33,34 @@
         
             function moveRectY(){
                  
-                if ( yaxis < canvasBottom ) {
-                    drawClear(); // Always clear the canvas before the next drawing
-                    yaxis += 20;   // change the position before updating the drawing                 
-                    ctx.fillRect(xaxis, yaxis, width, height); // x y / w h
-                    setTimeout(moveRectY, 100); // since we are not done, lets run the function for the next drawing
+                if ( window.yaxis < window.canvasBottom ) {
+                    window.drawClear(); // Always clear the canvas before the next drawing
+                    window.yaxis += 20;   // change the position before updating the drawing                 
+                    window.ctx.fillRect(window.xaxis, window.yaxis, window.width, window.height); // x y / w h
+                    setTimeout(window.moveRectY, 100); // since we are not done, lets run the function for the next drawing
                 } else {
-                    moveRectX(); // once we are done, lets start the next function
+                    window.moveRectX(); // once we are done, lets start the next function
                 }
             }
            
             window.addEventListener('load', moveRectY);
             
             function moveRectX(){
-               if ( xaxis < canvasRight ) {
-                    drawClear();
-                    xaxis += 20;                    
-                    ctx.fillRect(xaxis, yaxis, width, height); // x y / w h
-                    setTimeout(moveRectY, 100);
+               if ( window.xaxis < window.canvasRight ) {
+                    window.drawClear();
+                    window.xaxis += 20;                    
+                    window.ctx.fillRect(window.xaxis, window.yaxis, window.width, window.height); // x y / w h
+                    setTimeout(window.moveRectY, 100);
                 } else {
-                    reset();
+                    window.reset();
                 }
                
             }
             
             function reset() {
-               xaxis = 150;
-               yaxis = 0;  
-               moveRectY();
+               window.xaxis = 150;
+               window.yaxis = 0;  
+               window.moveRectY();
             }
             
            

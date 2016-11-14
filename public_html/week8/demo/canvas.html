@@ -43,16 +43,16 @@
                      * when we line to we drag our pen to the next x,y position
                      * once we complete our path we stroke the results so it displays on the page.
                      */
-                    ctx.beginPath();
-                    ctx.moveTo(100, 0); //x, y
-                    ctx.lineTo(100, can.height-40); 
-                    ctx.lineTo(can.width, can.height-40);
+                    window.ctx.beginPath();
+                    window.ctx.moveTo(100, 0); //x, y
+                    window.ctx.lineTo(100, window.can.height-40); 
+                    window.ctx.lineTo(window.can.width, window.can.height-40);
                     
-                    ctx.moveTo(0, 20); //x, y
-                    ctx.lineTo(can.width, 20); 
+                    window.ctx.moveTo(0, 20); //x, y
+                    window.ctx.lineTo(window.can.width, 20); 
                     // create a for loop that will create lines across the canvas
                     
-                    ctx.stroke();
+                    window.ctx.stroke();
                 }
                 line.addEventListener('click', drawLine);
                
@@ -68,21 +68,21 @@
                      * default settings.
                      * 
                      */
-                    ctx.save();
-                    ctx.strokeStyle = "orange";
-                    ctx.lineJoin = "square";
-                    ctx.lineCap = "round";
-                    ctx.lineWidth = 5;
+                    window.ctx.save();
+                    window.ctx.strokeStyle = "orange";
+                    window.ctx.lineJoin = "square";
+                    window.ctx.lineCap = "round";
+                    window.ctx.lineWidth = 5;
 
-                    ctx.beginPath();
-                    ctx.moveTo(175, 100); // x, y
+                    window.ctx.beginPath();
+                    window.ctx.moveTo(175, 100); // x, y
 
-                    ctx.lineTo(275, 250);
-                    ctx.lineTo(375, 150);
-                    ctx.lineTo(475, can.height-40);
+                    window.ctx.lineTo(275, 250);
+                    window.ctx.lineTo(375, 150);
+                    window.ctx.lineTo(475, window.can.height-40);
                     //ctx.closePath();
-                    ctx.stroke();
-                    ctx.restore();
+                    window.ctx.stroke();
+                    window.ctx.restore();
                    
                 }
                 diagline.addEventListener('click', drawDiagLine);
@@ -94,22 +94,22 @@
                  * then show the next drawing.  You can clear just part of a canvas
                  * but it's always best to clear the whole canvas and redraw
                  */
-                ctx.clearRect(0,0,can.width,can.height);
+                window.ctx.clearRect(0, 0, window.can.width, window.can.height); // x,y / w,h
             }
             Clear.addEventListener('click', drawClear);
         
             function drawRect(){
                 /* the fillStyle will color in the whole box with the color selected */
-                ctx.fillStyle = "#336699";
-                ctx.fillRect(150, 0, 50, 300); // x, y, width, height
+                window.ctx.fillStyle = "#336699";
+                window.ctx.fillRect(150, 0, 50, 300); // x, y, width, height
             }
             rect.addEventListener('click', drawRect);
             
             
             function drawText(){
-                ctx.fillStyle = "blue";
-                ctx.font = "16pt Helvetica";
-                ctx.fillText("Ford",(can.width/2)-100,can.height/2); //x,y
+                window.ctx.fillStyle = "blue";
+                window.ctx.font = "16pt Helvetica";
+                window.ctx.fillText("Ford", (window.can.width/2)-100, window.can.height/2); //x,y
             }
             text.addEventListener('click', drawText);
             
@@ -120,7 +120,7 @@
                console.log('image loaded'); 
             });
             function drawImage(){
-                ctx.drawImage(pic,30,0); // x, y
+                window.ctx.drawImage(pic,30,0); // x, y
             }
             img.addEventListener('click', drawImage); 
             
