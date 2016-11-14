@@ -25,18 +25,18 @@
              * when you save the data refresh the page to see the input value populate.
              */
             function saveData() {                
-                localStorage.setItem("fname", input.value);                
+                window.localStorage.setItem("fname", input.value);                
             }
             
             function deleteData() {
-                localStorage.removeItem("fname");
+                window.localStorage.removeItem("fname");
             }
                        
             
             function showData() {
                 var inputValue = localStorage.getItem("fname");
                 if ( inputValue ) {
-                    input.value = inputValue;
+                    window.input.value = inputValue;
                 }
             }
             
