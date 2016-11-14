@@ -66,7 +66,7 @@
             if ( this.readyState === XMLHttpRequest.DONE ) {
                 
                 var endTime = ( (performance.now() - window.startTime) / 1000.0 ).toFixed(2);
-                divProcess.innerHTML += '<p><small>fulfilled on ' + endTime + ' seconds</small></p>';
+                window.divProcess.innerHTML += '<p><small>fulfilled on ' + endTime + ' seconds</small></p>';
                 /* When the status is in a 200 range it means the call was good */
                 if ( this.status === 200 ) {
                     // handle this.response
