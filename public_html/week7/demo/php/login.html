@@ -33,14 +33,14 @@
             function checkForm(e) {
                 e.preventDefault();
 
-                 var username = document.querySelector('input[name="username"]');
-                 var password = document.querySelector('input[name="password"]');
+                var username = document.querySelector('input[name="username"]');
+                var password = document.querySelector('input[name="password"]');
 
-                 var data = 'username='+username.value+'&password='+password.value;
+                var data = 'username='+username.value+'&password='+password.value;
 
-                 var url = 'http://localhost/api/is-valid-login.php';
-                 var verb = 'POST';
-                 makeRequest(url, verb, data, httpResolve);
+                var url = 'http://localhost/api/is-valid-login.php';
+                var verb = 'POST';
+                window.makeRequest(url, verb, data, window.httpResolve);
 
             }
         
@@ -51,9 +51,9 @@
                     console.log(this.response);
                     var response = JSON.parse(this.response);
                     if ( response.data.loginValid ) {
-                        confirmation.innerHTML = 'Login Valid';
+                        window.confirmation.innerHTML = 'Login Valid';
                     } else {
-                        confirmation.innerHTML = 'Login is not valid';
+                        window.confirmation.innerHTML = 'Login is not valid';
                     }
                 } else {
                     // Performs the function "reject" when this.status is different than 2xx

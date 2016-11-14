@@ -36,8 +36,8 @@
                     httpRequest.send(data);
                 }
 
-                httpRequest.addEventListener('load', httpResolve.bind(httpRequest));
-                httpRequest.addEventListener('error', httpReject.bind(httpRequest));
+                httpRequest.addEventListener('load', window.httpResolve.bind(httpRequest));
+                httpRequest.addEventListener('error', window.httpReject.bind(httpRequest));
 
             }
 

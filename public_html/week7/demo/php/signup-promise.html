@@ -58,7 +58,7 @@
                 var url = 'http://localhost/api/save.php';
                 var verb = 'POST';
 
-                makeRequestPromise(url, verb, data).then(httpResolve);
+                window.makeRequestPromise(url, verb, data).then(httpResolve);
             }
 
             function httpResolve(response) {               
@@ -72,7 +72,7 @@
             }
 
             function displayMessage(msg) {
-                confirmation.innerHTML = msg;
+                window.confirmation.innerHTML = msg;
             }
 
 
@@ -82,11 +82,11 @@
                 var verb = 'POST';
                 var data = 'username=' + this.value;
 
-                makeRequestPromise(url, verb, data).then(function(response){
+                window.makeRequestPromise(url, verb, data).then(function(response){
                      if (response.data.userNameTaken) {
-                        displayMessage('Sorry please use a different user name');
+                        window.displayMessage('Sorry please use a different user name');
                     } else {
-                        displayMessage('user name is available');
+                        window.displayMessage('user name is available');
                     }
                 });
             });

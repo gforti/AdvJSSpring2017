@@ -34,7 +34,7 @@
         function makeRequest(url, callback) {
             /* we create our object that will allow us to open a connection to another website */
             var httpRequest = new XMLHttpRequest();
-            divProcess.innerHTML = '';
+            window.divProcess.innerHTML = '';
           
            /* we set event listeners to difference events of the http call */
             httpRequest.addEventListener('load', reqListener.bind(httpRequest, 'load'));
@@ -43,7 +43,7 @@
            
             /* we set/open the connection information */
             httpRequest.open('GET', url);
-            startTime = performance.now();
+            window.startTime = performance.now();
             /* once we send the call is executed and the event are published for the listeners */
             httpRequest.send();
             
@@ -59,13 +59,13 @@
               * UNSENT : 0
              */
             var state = 'UNSENT OPENED HEADERS_RECEIVED LOADING DONE'.split(' ');
-            divProcess.innerHTML += '<p> Current ready state is: ' + state[this.readyState] + ' = ' + this.readyState + '</p>';
+            window.divProcess.innerHTML += '<p> Current ready state is: ' + state[this.readyState] + ' = ' + this.readyState + '</p>';
             /* this function is called on each state changed for the readystatechange listener
              * So we have an if statement to check the progress of the call 
              */
             if ( this.readyState === XMLHttpRequest.DONE ) {
                 
-                var endTime = ( (performance.now() - startTime) / 1000.0 ).toFixed(2);
+                var endTime = ( (performance.now() - window.startTime) / 1000.0 ).toFixed(2);
                 divProcess.innerHTML += '<p><small>fulfilled on ' + endTime + ' seconds</small></p>';
                 /* When the status is in a 200 range it means the call was good */
                 if ( this.status === 200 ) {

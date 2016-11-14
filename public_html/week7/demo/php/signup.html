@@ -58,7 +58,7 @@
                 var url = 'http://localhost/api/save.php';
                 var verb = 'POST';
 
-                makeRequest(url, verb, data, httpResolve);
+                window.makeRequest(url, verb, data, httpResolve);
             }
 
             function httpResolve() {
@@ -68,9 +68,9 @@
                     console.log(response);
 
                     if (response.data.loginSave) {
-                        displayMessage('Login Saved');
+                        window.displayMessage('Login Saved');
                     } else {
-                        displayMessage('Login could not be Saved');
+                        window.displayMessage('Login could not be Saved');
                     }
 
                 } else {
@@ -80,7 +80,7 @@
             }
 
             function displayMessage(msg) {
-                confirmation.innerHTML = msg;
+                window.confirmation.innerHTML = msg;
             }
 
 
@@ -90,7 +90,7 @@
                 var verb = 'POST';
                 var data = 'username=' + this.value;
 
-                makeRequest(url, verb, data, httpResolveUsername);
+                window.makeRequest(url, verb, data, window.httpResolveUsername);
             });
 
 
@@ -100,9 +100,9 @@
                     var response = JSON.parse(this.response); //Take the JSOn string and turn it into a JSON object
                     console.log(response);
                     if (response.data.userNameTaken) {
-                        displayMessage('Sorry please use a different user name');
+                        window.displayMessage('Sorry please use a different user name');
                     } else {
-                        displayMessage('user name is available');
+                        window.displayMessage('user name is available');
                     }
                 } else {
                     // Performs the function "reject" when this.status is different than 2xx

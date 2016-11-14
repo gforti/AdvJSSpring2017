@@ -41,7 +41,7 @@
                  var url = 'http://localhost/api/is-valid-login.php';
                  var verb = 'POST';
                  /* promises take two call backs, one for the success and one for the failure */
-                 makeRequestPromise(url, verb, data).then(httpResolve, httpResolveError);
+                 window.makeRequestPromise(url, verb, data).then(window.httpResolve, window.httpResolveError);
 
             }
         
@@ -51,9 +51,9 @@
                 console.log(this.response);
 
                 if ( response.data.loginValid ) {
-                    confirmation.innerHTML = 'Login Valid';
+                    window.confirmation.innerHTML = 'Login Valid';
                 } else {
-                    confirmation.innerHTML = 'Login is not valid';
+                    window.confirmation.innerHTML = 'Login is not valid';
                 }
                                       
              }

@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -47,10 +42,10 @@ and open the template in the editor.
                  * promise
                  */
                 promise.then(function(result) {
-                    log.insertAdjacentHTML('beforeend', result +'<br/>');
+                    window.log.insertAdjacentHTML('beforeend', result +'<br/>');
                     console.log(result); // "Stuff worked!"
                 }, function(err) {
-                    log.insertAdjacentHTML('beforeend', err +'<br/>');
+                    window.log.insertAdjacentHTML('beforeend', err +'<br/>');
                     console.log(err); // Error: "It broke"
                 });
             }
