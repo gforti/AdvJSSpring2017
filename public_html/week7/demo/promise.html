@@ -27,8 +27,8 @@
                 var promise = new Promise(function(resolve, reject) {
                     // do a thing, possibly async, then…
 
-                    var result = Math.round( Math.random() );
-
+                    var result = Math.round( Math.random() ); // Will generate a random number 0 or 1
+                    console.log(result);
                     if ( result ) {
                       resolve("Stuff worked!");
                     }

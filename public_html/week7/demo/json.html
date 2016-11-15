@@ -18,6 +18,9 @@
              * 
              * array notation has the benefit of passing a variable key
              */
+            
+            var objSample = {}; // new Object
+                                  
             var basicJSON = {
                 'userId': 1,
                 'id': 1,
@@ -41,9 +44,16 @@
              
             console.log( 'access ' + keyItem + ' property', basicJSON[keyItem] );
             
-            console.log( JSON.stringify(basicJSON) );
+            /* take the JSON object and turn it into a string */            
+            var objToString = JSON.stringify(basicJSON);            
+            console.log( objToString );
             
-            console.log( JSON.parse('{"userId": 1,"id": 1,"title": "quo adipisci enim quam ut ab","completed": true}') );
+             
+            /* this will take the JSON string and turn it into an object */
+            var objParsed = JSON.parse('{"userId": 1,"id": 1,"title": "quo adipisci enim quam ut ab","completed": true}');
+            console.log( objParsed ) ;
+            
+            
             
             for ( var key in basicJSON ) {
                 console.log(key, basicJSON[key] );
