@@ -20,7 +20,7 @@
             'use strict';
             
             document.querySelector('button.good').addEventListener('click', makeRequest.bind(null, './data/todo.json', 'GET', null) );
-            document.querySelector('button.php').addEventListener('click', makeRequest.bind(null, 'http://localhost/api/simple-rest.php', 'GET', null) );
+            document.querySelector('button.php').addEventListener('click', makeRequest.bind(null, 'http://localhost/php/api/simple-rest.php', 'GET', null) );
             document.querySelector('button.bad').addEventListener('click', makeRequest.bind(null, 'todo.json', 'GET', null) );
                             
             function makeRequest(url, verb, data) {
