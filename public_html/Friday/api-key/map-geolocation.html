@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            #map {
+             height: 400px;
+             width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id="info"></div>
+        <div id="map"></div>
+
+        <script type="text/javascript">
+           
+            var div = document.querySelector('#info');
+            
+            function displayMap() {
+                               
+                if ('geolocation' in window.navigator) {
+
+                    window.navigator.geolocation.getCurrentPosition(function (position) {                        
+                        var cords = position.coords;
+                        var html = '';
+                        html += 'Your current position is:';
+                        html += '<br />';
+                        html += 'Latitude : ' + cords.latitude;
+                        html += '<br />';
+                        html += 'Longitude: ' + cords.longitude;
+                        html += '<br />';
+                        html += 'More or less ' + cords.accuracy + ' meters.';
+                        html += '<br />';
+                        html += 'Time: ' + new Date(position.timestamp);
+                        
+                        window.div.innerHTML = html;
+                        
+                        
+                        var location = {lat: cords.latitude, lng: cords.longitude};
+                        var map = new window.google.maps.Map(window.document.querySelector('#map'), {
+                          zoom: 10,
+                          center: location
+                        });
+                        var marker = new window.google.maps.Marker({
+                          position: location,
+                          map: map
+                        });
+                                               
+                    });
+                   
+
+                }
+            }
+            
+          
+
+        </script>
+        <!-- 
+            async downloads the file during HTML parsing and will pause the HTML parser to execute it when it has finished downloading.
+            defer downloads the file during HTML parsing and will only execute it after the parser has completed. defer scripts are also guarenteed to execute in the order that they appear in the document.
+        -->
+        <!--- ####### Replace YOUR_API_KEY with your Google maps API key ##### --->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?callback=displayMap&key=YOUR_API_KEY"></script>
+    </body>
+</html>

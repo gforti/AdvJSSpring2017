@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            #map-canvas {
+                width: 500px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map-canvas"></div>
+        
+        <!--- ####### Replace YOUR_API_KEY with your Google maps API key ##### --->
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+        <script type="text/javascript">
+         
+           var map, address = 'Window context', geocoder, cords;
+           
+           google.maps.event.addDomListener(window, 'load', start);
+           
+           function start() {
+            
+             if ( "geolocation" in window.navigator ) {
+
+                 window.navigator.geolocation.getCurrentPosition(function(position){
+                     
+                     window.cords = position.coords;
+
+                     console.log('Your current position is:');
+                     console.log('Latitude : ' + window.cords.latitude);
+                     console.log('Longitude: ' + window.cords.longitude);
+                     console.log('More or less ' + window.cords.accuracy + ' meters.');
+
+                    window.geocoder = new google.maps.Geocoder();
+                    window.geoAddress(window.cords.latitude, window.cords.longitude, window.setAddress);
+                 });
+
+             }
+         }
+            
+            
+            function initialize(Lat, Lng) {
+                
+            var myLatlng = new window.google.maps.LatLng(Lat, Lng);
+                
+              var mapOptions = {
+                zoom: 17,
+                center: myLatlng,
+                mapTypeId: window.google.maps.MapTypeId.SATELLITE,
+                streetViewControl : false,
+                mapTypeControl : false,
+                zoomControlOptions : {
+                    position : window.google.maps.ControlPosition.RIGHT_BOTTOM
+                }
+              };
+              window.map = new window.google.maps.Map(document.querySelector('#map-canvas'),
+                  mapOptions);
+                  
+                  var marker = new window.google.maps.Marker({
+                        position: myLatlng,
+                        map: window.map,
+                        title: 'Hello World!'
+                    });
+                    
+                    
+                    var contentString = '<p>'+window.address+'</p>';
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                  
+                  window.google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map,marker);
+                  });
+            }
+            
+            
+            
+            
+            
+            function geoAddress(lat, lng, callback) {
+                
+                var latlng = new google.maps.LatLng(lat, lng);
+                
+                window.geocoder.geocode({'latLng' : latlng}, callback);
+                
+            }
+            
+            
+            function setAddress(results, status) {
+                
+                if ( status === window.google.maps.GeocoderStatus.OK ) {
+                     window.address = results[1].formatted_address;
+                }
+               
+                window.initialize(window.cords.latitude, window.cords.longitude);
+            }
+            
+            
+            
+            
+        </script>
+            
+    </body>
+</html>

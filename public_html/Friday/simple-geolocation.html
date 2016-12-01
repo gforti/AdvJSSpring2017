@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div></div>
+
+        <script type="text/javascript">
+
+            console.log('navigator.geolocation' , window.navigator.geolocation);
+            
+            var div = document.querySelector('div');
+            window.addEventListener('load', initialize);
+            
+            function initialize() {
+                              
+                if ('geolocation' in window.navigator) {
+
+                    window.navigator.geolocation.getCurrentPosition(function (position) {
+                        console.log('position', position);
+                        var cords = position.coords;
+                        var html = '';
+                        html += 'Your current position is:';
+                        html += '<br />';
+                        html += 'Latitude : ' + cords.latitude;
+                        html += '<br />';
+                        html += 'Longitude: ' + cords.longitude;
+                        html += '<br />';
+                        html += 'More or less ' + cords.accuracy + ' meters.';
+                        html += '<br />';
+                        html += 'Time: ' + new Date(position.timestamp);
+                        
+                        window.div.innerHTML = html;
+                    });
+
+                } else {
+                    window.div.innerHTML = 'geolocation is not supported';
+                }
+            }
+
+        </script>
+    </body>
+</html>
