@@ -16,10 +16,17 @@
             window.addEventListener('load', initialize);
             
             function initialize() {
+                
+                /* https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions */
+                var positionOptions = {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                };
                               
                 if ('geolocation' in window.navigator) {
                     /* you can also use window.navigator.geolocation.watchPosition() to continue to get the current position continually */
-                    window.navigator.geolocation.getCurrentPosition(handlePosition);
+                    window.navigator.geolocation.getCurrentPosition(window.handlePosition, window.positionError, positionOptions);
                 } else {
                     window.div.innerHTML = 'geolocation is not supported';
                 }
@@ -38,10 +45,16 @@
                 html += '<br />';
                 html += 'More or less ' + cords.accuracy + ' meters.';
                 html += '<br />';
+                html += 'More or less ' + (cords.accuracy * 0.00062137).toFixed(2) + ' miles.';
+                html += '<br />';
                 html += 'Time: ' + new Date(position.timestamp);
 
                 window.div.innerHTML = html;
             }
+            
+            function positionError(err) {
+                console.warn('ERROR(' + err.code + '): ' + err.message);
+            };
 
         </script>
     </body>
