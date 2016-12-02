@@ -35,6 +35,8 @@
                         html += '<br />';
                         html += 'More or less ' + cords.accuracy + ' meters.';
                         html += '<br />';
+                        html += 'More or less ' + (cords.accuracy * 0.00062137).toFixed(2) + ' miles.';
+                        html += '<br />';
                         html += 'Time: ' + new Date(position.timestamp);
                         
                         window.div.innerHTML = html;
